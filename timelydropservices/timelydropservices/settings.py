@@ -167,4 +167,4 @@ DEFAULT_FROM_EMAIL = "timelydropservices@gmail.com"
 EMAIL_HOST_PASSWORD = 'xofj oyiq eqcz ntri'
 
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
