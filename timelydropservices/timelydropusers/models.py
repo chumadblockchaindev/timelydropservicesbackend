@@ -80,6 +80,17 @@ class GetAQuote(models.Model):
         return f"Quote for {self.email} - {'Accepted' if self.is_quote_accepted else 'Pending'}"
 
 
+class Review(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    review_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Review by {self.name} - {'Approved' if self.is_approved else 'Pending'}"
+
+
 class NewsletterSubscription(models.Model):
     email = models.EmailField(unique=True)
     subscribed_on = models.DateTimeField(auto_now_add=True)

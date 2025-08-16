@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, PackageDelivery, GetAQuote, NewsletterSubscription
+from .models import User, PackageDelivery, GetAQuote, NewsletterSubscription, Review
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,7 +19,14 @@ class GetAQuoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = GetAQuote
         fields = '__all__'
-        read_only_fields = ('is_quote_accepted',)
+        read_only_fields = ('is_quote_accepted')
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['name', 'email', 'review_text', 'created_at']
+        read_only_fields = ('created_at',)
 
 
 class NewsletterSubscriptionSerializer(serializers.ModelSerializer):

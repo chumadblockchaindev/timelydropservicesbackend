@@ -1,6 +1,8 @@
 from rest_framework import viewsets, generics, permissions
-from .models import User, PackageDelivery, GetAQuote, NewsletterSubscription
-from .serializers import UserSerializer, PackageDeliverySerializer, GetAQuoteSerializer, NewsletterSubscriptionSerializer
+from .models import User, PackageDelivery, GetAQuote, NewsletterSubscription, Review
+from .serializers import UserSerializer, PackageDeliverySerializer, GetAQuoteSerializer, NewsletterSubscriptionSerializer, ReviewSerializer
+from rest_framework.response import Response
+from rest_framework.serializers import ValidationError
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -29,3 +31,11 @@ class TrackDeliveryView(generics.RetrieveAPIView):
     queryset = PackageDelivery.objects.all()
     serializer_class = PackageDeliverySerializer
     lookup_field = 'tracking_number'
+
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        return Review.objects.filter(is_approved=True)

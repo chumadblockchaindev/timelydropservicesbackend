@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, PackageDelivery, GetAQuote, NewsletterSubscription
+from .models import User, PackageDelivery, GetAQuote, NewsletterSubscription, Review
 
 
 @admin.register(User)
@@ -20,6 +20,14 @@ class GetAQuoteAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone_number', 'carton_dimension',
                     'package_details', 'is_quote_accepted', 'request_date')
     search_fields = ('email',)
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'review_text',
+                    'created_at', 'is_approved')
+    search_fields = ('email', 'name')
+    list_filter = ('is_approved',)
 
 
 @admin.register(NewsletterSubscription)
