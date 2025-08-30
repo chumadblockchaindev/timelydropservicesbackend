@@ -152,7 +152,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://timelydropservices.vercel.app"
+    "https://timelydropservices.vercel.app",
+    "https://timelydropservices.com"
 ]
 CORS_ALLOW_CREDENTIALS = True
 
